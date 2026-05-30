@@ -144,7 +144,7 @@ frontend development standards.
 
 <br/><br/>
 
-<img src="https://streak-stats.demolab.com?user=tony-kobs&hide_border=true&background=00000000&ring=B76E8A&fire=CF7F9D&currStreakLabel=8E7AB5&sideLabels=5E9DBB&dates=999999" alt="GitHub Streak" />
+<a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=tony-kobs&theme=oceanic-next&date_format=M%20j%5B%2C%20Y%5D" alt="GitHub Streak" /></a>
 </div>
 
 <!-- ============ CONTACT ============ -->
