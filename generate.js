@@ -29,26 +29,88 @@ async function fetchContributions() {
   });
 
   const json = await res.json();
-  return json.data.user.contributionsCollection.contributionCalendar.weeks
-    .flatMap(w => w.contributionDays)
-    .filter(d => d.contributionCount > 0);
+  return json.data.user.contributionsCollection.contributionCalendar.weeks;
 }
 
-function fixed(n, dec = 4) {
-  return parseFloat(n.toFixed(dec));
+function fixed(n) {
+  return parseFloat(n.toFixed(4));
 }
 
-function generateSVG(days) {
+function generateSVG(weeks) {
   const W = 900;
-  const H = 220;
-  const SHIP_X = 45;
-  const BULLET_SPEED = 650; // px/s
-  const FIRE_INTERVAL = 0.5; // s between shots
-  const WIN_DISPLAY = 2.0;   // s to show You Win
-  const WIN_PAUSE = 0.5;     // s before restart
+  const H = 240;
+  const SHIP_X = 40;
+
+  // ── Grid dimensions — match GitHub exactly ─────────────────────────
+  const CELL = 11;   // cell size px
+  const GAP  = 3;    // gap between cells
+  const STEP = CELL + GAP; // 14px per week/day
+  const GRID_X = 95; // start X (leave room for day labels)
+  const GRID_Y = 30; // start Y (leave room for month labels)
+  const R = 5;       // uniform circle radius
+
+  const BULLET_SPEED = 650;
+  const FIRE_INTERVAL = 0.5;
+  const WIN_DISPLAY = 2.2;
+  const WIN_PAUSE = 0.6;
+
+  // ── Parse weeks into flat grid ─────────────────────────────────────
+  const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const DAY_NAMES = ['','Mon','','Wed','','Fri',''];
+
+  const targets = [];
+  const monthLabels = [];
+  let lastMonth = -1;
+
+  weeks.forEach((week, w) => {
+    week.contributionDays.forEach((day, d) => {
+      const date = new Date(day.date);
+      const month = date.getMonth();
+
+      // Track month label positions
+      if (d === 0 && month !== lastMonth) {
+        monthLabels.push({ x: GRID_X + w * STEP, label: MONTH_NAMES[month] });
+        lastMonth = month;
+      }
+
+      if (day.contributionCount > 0) {
+        const cx = GRID_X + w * STEP + CELL / 2;
+        const cy = GRID_Y + d * STEP + CELL / 2;
+        const count = day.contributionCount;
+        const level = count >= 10 ? '#216e39'
+                    : count >= 5  ? '#30a14e'
+                    : count >= 2  ? '#40c463'
+                    :               '#9be9a8';
+        targets.push({ cx: Math.round(cx), cy: Math.round(cy), count, level, id: `t${w}_${d}` });
+      }
+    });
+  });
+
+  // Shuffle for random destruction order
+  for (let i = targets.length - 1; i > 0; i--) {
+    const j = (i * 1664525 + 1013904223) % (i + 1);
+    [targets[i], targets[j]] = [targets[j], targets[i]];
+  }
+
+  // ── Timing ─────────────────────────────────────────────────────────
+  const BULLET_START_X = SHIP_X + 32;
+
+  const seq = targets.map((t, i) => {
+    const fireTime   = i * FIRE_INTERVAL;
+    const travelTime = (t.cx - BULLET_START_X) / BULLET_SPEED;
+    const hitTime    = fireTime + travelTime;
+    return { ...t, fireTime, travelTime, hitTime };
+  });
+
+  const lastHit  = seq.length > 0 ? seq[seq.length - 1].hitTime : 3;
+  const winStart = lastHit + 0.4;
+  const winEnd   = winStart + WIN_DISPLAY;
+  const totalDur = winEnd + WIN_PAUSE;
+
+  function pct(t) { return fixed(Math.max(0, Math.min(1, t / totalDur))); }
 
   // ── Stars ──────────────────────────────────────────────────────────
-  const stars = Array.from({ length: 70 }, (_, i) => {
+  const stars = Array.from({ length: 60 }, (_, i) => {
     const x = ((i * 173) % W).toFixed(0);
     const y = ((i * 113) % H).toFixed(0);
     const r = i % 4 === 0 ? 1.5 : 0.7;
@@ -59,106 +121,52 @@ function generateSVG(days) {
     </circle>`;
   }).join('');
 
-  // ── Targets: GitHub-style contribution grid ─────────────────────────
-  const WEEKS = 53;
-  const DAYS  = 7;
-  const CELL  = 11;
-  const GAP   = 2;
-  const GRID_X = 190;
-  const GRID_Y = 10;
+  // ── Month labels ───────────────────────────────────────────────────
+  const monthLabelsSVG = monthLabels.map(m =>
+    `<text x="${m.x}" y="${GRID_Y - 6}" font-size="10" fill="#8b949e" font-family="monospace">${m.label}</text>`
+  ).join('');
 
-  const allDays = days.slice(-(WEEKS * DAYS));
-  const targets = [];
+  // ── Day labels ─────────────────────────────────────────────────────
+  const dayLabelsSVG = DAY_NAMES.map((name, d) =>
+    name ? `<text x="${GRID_X - 6}" y="${GRID_Y + d * STEP + CELL - 1}" font-size="9" fill="#8b949e" font-family="monospace" text-anchor="end">${name}</text>` : ''
+  ).join('');
 
-  for (let w = 0; w < WEEKS; w++) {
-    for (let d = 0; d < DAYS; d++) {
-      const idx = w * DAYS + d;
-      const day = allDays[idx];
-      if (day && day.contributionCount > 0) {
-        const cx = GRID_X + w * (CELL + GAP) + CELL / 2;
-        const cy = GRID_Y + d * (CELL + GAP) + CELL / 2;
-        const count = day.contributionCount;
-        const level = count >= 10 ? '#216e39'
-                    : count >= 5  ? '#30a14e'
-                    : count >= 2  ? '#40c463'
-                    :               '#9be9a8';
-        targets.push({ cx: Math.round(cx), cy: Math.round(cy), count, level, id: `t${w}_${d}` });
-      }
-    }
-  }
-
-  // Shuffle targets so bullets hit in random order
-  for (let i = targets.length - 1; i > 0; i--) {
-    const j = Math.floor((i * 1664525 + 1013904223) % (i + 1));
-    [targets[i], targets[j]] = [targets[j], targets[i]];
-  }
-
-  // ── Timing per target ───────────────────────────────────────────────
-  const BULLET_START_X = SHIP_X + 30;
-
-  const seq = targets.map((t, i) => {
-    const fireTime  = i * FIRE_INTERVAL;
-    const travelTime = (t.cx - BULLET_START_X) / BULLET_SPEED;
-    const hitTime   = fireTime + travelTime;
-    return { ...t, fireTime, travelTime, hitTime };
-  });
-
-  const lastHit     = seq[seq.length - 1].hitTime;
-  const winStart    = lastHit + 0.3;
-  const winEnd      = winStart + WIN_DISPLAY;
-  const totalDur    = winEnd + WIN_PAUSE;
-
-  function pct(t) { return fixed(Math.max(0, Math.min(1, t / totalDur))); }
-
-  // ── Ship: continuous up-down oscillation ───────────────────────────
-  const shipShape = `
-    <polygon points="30,0 -10,-14 -4,0 -10,14" fill="#cc1100"/>
-    <polygon points="22,0 2,-7 -2,0 2,7" fill="#ff3322"/>
-    <polygon points="-4,-10 -20,-22 -24,-12 -10,-5" fill="#880000"/>
-    <polygon points="-4,10 -20,22 -24,12 -10,5" fill="#880000"/>
-    <ellipse cx="-14" cy="0" rx="5" ry="4" fill="#ff6600" opacity="0.95">
-      <animate attributeName="rx" values="5;9;5" dur="0.12s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="-22" cy="-16" rx="3" ry="2" fill="#ff8800" opacity="0.7">
-      <animate attributeName="rx" values="3;5;3" dur="0.15s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="-22" cy="16" rx="3" ry="2" fill="#ff8800" opacity="0.7">
-      <animate attributeName="rx" values="3;5;3" dur="0.15s" repeatCount="indefinite"/>
-    </ellipse>
-  `;
-
-  const shipSVG = `
-    <g>
-      ${shipShape}
-      <animateTransform attributeName="transform" type="translate"
-        values="${SHIP_X},20; ${SHIP_X},${H/2}; ${SHIP_X},${H-20}; ${SHIP_X},${H/2}; ${SHIP_X},20"
-        keyTimes="0;0.25;0.5;0.75;1"
-        calcMode="spline"
-        keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1"
-        dur="4s"
-        repeatCount="indefinite"/>
-    </g>
-  `;
+  // ── Empty grid background cells ────────────────────────────────────
+  const emptyCells = weeks.map((week, w) =>
+    week.contributionDays.map((day, d) => {
+      const x = GRID_X + w * STEP;
+      const y = GRID_Y + d * STEP;
+      return `<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" fill="#161b22"/>`;
+    }).join('')
+  ).join('');
 
   // ── Contributors: disappear on hit ─────────────────────────────────
   const targetsSVG = seq.map(s => {
-    const r = Math.min(4 + Math.sqrt(s.count), 7);
     const p0 = pct(s.hitTime);
     const p1 = pct(s.hitTime + 0.15);
+    const x  = s.cx - CELL / 2;
+    const y  = s.cy - CELL / 2;
     return `
-    <g>
-      <circle cx="${s.cx}" cy="${s.cy}" r="${r}" fill="${s.level}">
-        <animate attributeName="opacity" values="0.9;0.9;0;0"
-          keyTimes="0;${p0};${p1};1"
-          dur="${totalDur}s" repeatCount="indefinite"/>
-        <animate attributeName="r" values="${r};${r};${r * 2.5};0"
-          keyTimes="0;${p0};${p1};1"
-          dur="${totalDur}s" repeatCount="indefinite"/>
-      </circle>
-    </g>`;
+    <rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" fill="${s.level}">
+      <animate attributeName="opacity" values="0.9;0.9;0;0"
+        keyTimes="0;${p0};${p1};1"
+        dur="${totalDur}s" repeatCount="indefinite"/>
+      <animate attributeName="width" values="${CELL};${CELL};${CELL * 2};0"
+        keyTimes="0;${p0};${p1};1"
+        dur="${totalDur}s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="${CELL};${CELL};${CELL * 2};0"
+        keyTimes="0;${p0};${p1};1"
+        dur="${totalDur}s" repeatCount="indefinite"/>
+      <animate attributeName="x" values="${x};${x};${x - CELL / 2};${s.cx}"
+        keyTimes="0;${p0};${p1};1"
+        dur="${totalDur}s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="${y};${y};${y - CELL / 2};${s.cy}"
+        keyTimes="0;${p0};${p1};1"
+        dur="${totalDur}s" repeatCount="indefinite"/>
+    </rect>`;
   }).join('');
 
-  // ── Bullets ─────────────────────────────────────────────────────────
+  // ── Bullets ────────────────────────────────────────────────────────
   const bulletsSVG = seq.map(s => {
     const pFire  = pct(s.fireTime);
     const pStart = pct(s.fireTime + 0.04);
@@ -171,19 +179,45 @@ function generateSVG(days) {
         keyTimes="0;${pFire};${pStart};${pHit};${pEnd};1"
         dur="${totalDur}s" repeatCount="indefinite"/>
       <animate attributeName="x"
-        values="${BULLET_START_X};${BULLET_START_X};${BULLET_START_X};${s.cx - 8};${s.cx - 8};${BULLET_START_X}"
+        values="${BULLET_START_X};${BULLET_START_X};${BULLET_START_X};${s.cx - 8};${s.cx};${BULLET_START_X}"
         keyTimes="0;${pFire};${pStart};${pHit};${pEnd};1"
         calcMode="linear"
         dur="${totalDur}s" repeatCount="indefinite"/>
     </rect>`;
   }).join('');
 
-  // ── You Win ─────────────────────────────────────────────────────────
+  // ── Ship ───────────────────────────────────────────────────────────
+  const shipSVG = `
+    <g>
+      <polygon points="30,0 -10,-14 -4,0 -10,14" fill="#cc1100"/>
+      <polygon points="22,0 2,-7 -2,0 2,7" fill="#ff3322"/>
+      <polygon points="-4,-10 -20,-22 -24,-12 -10,-5" fill="#880000"/>
+      <polygon points="-4,10 -20,22 -24,12 -10,5" fill="#880000"/>
+      <ellipse cx="-14" cy="0" rx="5" ry="4" fill="#ff6600" opacity="0.95">
+        <animate attributeName="rx" values="5;9;5" dur="0.12s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="-22" cy="-16" rx="3" ry="2" fill="#ff8800" opacity="0.7">
+        <animate attributeName="rx" values="3;5;3" dur="0.15s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="-22" cy="16" rx="3" ry="2" fill="#ff8800" opacity="0.7">
+        <animate attributeName="rx" values="3;5;3" dur="0.15s" repeatCount="indefinite"/>
+      </ellipse>
+      <animateTransform attributeName="transform" type="translate"
+        values="${SHIP_X},22; ${SHIP_X},${H/2}; ${SHIP_X},${H-22}; ${SHIP_X},${H/2}; ${SHIP_X},22"
+        keyTimes="0;0.25;0.5;0.75;1"
+        calcMode="spline"
+        keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1"
+        dur="4s"
+        repeatCount="indefinite"/>
+    </g>
+  `;
+
+  // ── You Win ────────────────────────────────────────────────────────
   const pw0 = pct(winStart);
   const pw1 = pct(winStart + 0.3);
   const pw2 = pct(winEnd - 0.3);
   const pw3 = pct(winEnd);
-  const total = seq.reduce((s, t) => s + t.count, 0);
+  const total = targets.reduce((s, t) => s + t.count, 0);
 
   const youWin = `
     <text x="${W / 2}" y="${H / 2 + 10}" text-anchor="middle"
@@ -194,8 +228,8 @@ function generateSVG(days) {
         keyTimes="0;${pw0};${pw1};${pw2};${pw3};1"
         dur="${totalDur}s" repeatCount="indefinite"/>
     </text>
-    <text x="${W / 2}" y="${H / 2 + 40}" text-anchor="middle"
-      font-size="14" fill="#4fc3f7" font-family="monospace" opacity="0">
+    <text x="${W / 2}" y="${H / 2 + 42}" text-anchor="middle"
+      font-size="13" fill="#4fc3f7" font-family="monospace" opacity="0">
       ${total} contributions destroyed
       <animate attributeName="opacity" values="0;0;1;1;0;0"
         keyTimes="0;${pw0};${pw1};${pw2};${pw3};1"
@@ -206,6 +240,9 @@ function generateSVG(days) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <rect width="${W}" height="${H}" fill="#0d1117" rx="8"/>
   ${stars}
+  ${emptyCells}
+  ${monthLabelsSVG}
+  ${dayLabelsSVG}
   ${targetsSVG}
   ${bulletsSVG}
   ${shipSVG}
@@ -215,11 +252,11 @@ function generateSVG(days) {
 }
 
 async function main() {
-  const days = await fetchContributions();
-  const svg = generateSVG(days);
+  const weeks = await fetchContributions();
+  const svg = generateSVG(weeks);
   fs.mkdirSync('dist', { recursive: true });
   fs.writeFileSync('dist/arcade.svg', svg);
-  console.log(`Generated arcade.svg — ${days.length} contribution days, ${days.reduce((s,d)=>s+d.contributionCount,0)} total`);
+  console.log(`Generated arcade.svg`);
 }
 
 main();
