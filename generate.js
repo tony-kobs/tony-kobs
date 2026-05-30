@@ -42,15 +42,15 @@ function generateSVG(weeks) {
   const SHIP_X = 40;
 
   // ── Grid dimensions — match GitHub exactly ─────────────────────────
-  const CELL = 11;   // cell size px
-  const GAP  = 3;    // gap between cells
+  const CELL = 22;   // cell size px
+  const GAP  = 5;    // gap between cells
   const STEP = CELL + GAP; // 14px per week/day
   const GRID_X = 95; // start X (leave room for day labels)
-  const GRID_Y = 30; // start Y (leave room for month labels)
+  const GRID_Y = 28; // start Y (leave room for month labels)
   const R = 5;       // uniform circle radius
 
   const BULLET_SPEED = 650;
-  const FIRE_INTERVAL = 0.5;
+  const FIRE_INTERVAL = 0.1;
   const WIN_DISPLAY = 2.2;
   const WIN_PAUSE = 0.6;
 
