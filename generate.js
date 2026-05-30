@@ -45,7 +45,7 @@ function generateSVG(weeks) {
   const CELL = 22;   // cell size px
   const GAP  = 5;    // gap between cells
   const STEP = CELL + GAP; // 14px per week/day
-  const GRID_X = 95; // start X (leave room for day labels)
+  const GRID_X = 85; // start X (leave room for day labels)
   const GRID_Y = 28; // start Y (leave room for month labels)
   const R = 5;       // uniform circle radius
 
@@ -62,7 +62,7 @@ function generateSVG(weeks) {
   const monthLabels = [];
   let lastMonth = -1;
 
-  weeks.forEach((week, w) => {
+  weeks.slice(-26).forEach((week, w) => {
     week.contributionDays.forEach((day, d) => {
       const date = new Date(day.date);
       const month = date.getMonth();
