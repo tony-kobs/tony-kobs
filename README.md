@@ -56,6 +56,48 @@ Build products. Solve challenges. Keep growing.
 <!-- ============ PROJECTS ============ -->
 ## 🌟 Featured Projects
 
+<!-- ---- NoteHub ---- -->
+### 📝 NoteHub · `Individual Project`
+
+> A responsive note management application featuring secure authentication,
+> CRUD functionality, REST API integration, and an intuitive interface for
+> organizing and managing personal notes.
+
+**My role — Developer:** designed and developed the application independently,
+implemented authentication, protected routes, REST API integration, reusable
+React components, and responsive layouts while following modern frontend
+development practices.
+
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Redux Toolkit](https://img.shields.io/badge/-Redux_Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white)
+![TanStack Query](https://img.shields.io/badge/-TanStack_Query-FF4154?style=flat-square&logo=reactquery&logoColor=white)
+![Axios](https://img.shields.io/badge/-Axios-5A29E4?style=flat-square&logo=axios&logoColor=white)
+
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-B76E8A?style=for-the-badge)](https://09-auth-psi-ebon.vercel.app/)
+[![Source Code](https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/09-auth)
+
+<!-- ---- MaryBra ---- -->
+### 👗 MaryBra E-commerce · `In Progress`
+
+> A modern e-commerce website for a women's lingerie brand focused on elegant
+> design, responsive layouts, reusable UI components, and a seamless online
+> shopping experience across all devices.
+
+**My role — Frontend Developer:** designing and developing the frontend
+architecture, building reusable React components, implementing responsive
+layouts, integrating REST APIs, and continuously improving performance,
+accessibility, and user experience.
+
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![REST API](https://img.shields.io/badge/-REST_API-009688?style=flat-square)
+
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-B76E8A?style=for-the-badge)](https://mary-landing.vercel.app/)
+[![Source Code](https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/mary-landing)
+
 <!-- ---- Sweet Workshop ---- -->
 ### 🍰 Sweet Workshop · `Team Project`
 
