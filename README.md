@@ -56,6 +56,47 @@ Build products. Solve challenges. Keep growing.
 <!-- ============ PROJECTS ============ -->
 ## 🌟 Featured Projects
 
+<!-- ---- Hexa Diamonds ---- -->
+### 💎 Hexa Diamonds · `Commercial Project`
+ 
+> A promotional landing page for a mobile puzzle game on Google Play, featuring
+> a sticky header, responsive layout, SEO optimization, and legal pages —
+> built in collaboration with a designer.
+ 
+**My role — Frontend Developer:** developed the landing page independently within
+a team alongside a designer, implemented responsive layouts, burger menu, review
+sliders, and image optimization, while strictly following the team's architecture
+standard of managing DOM state via data attributes instead of classList.
+ 
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+ 
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-B76E8A?style=for-the-badge)](https://tony-kobs.github.io/STPP-395/)
+[![Source Code](https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/STPP-395)
+ 
+<!-- ---- Weather Now ---- -->
+### 🌤️ Weather Now · `Individual Project`
+ 
+> A modern weather forecast application with city search, hourly and 7-day
+> forecasts, unit switching, and full UK/EN localization — built with Next.js
+> App Router.
+ 
+**My role — Developer:** designed and developed the application independently,
+implemented App Router architecture, REST API integration with Open-Meteo,
+geolocation with reverse geocoding, i18n localization, and full SEO setup
+(Open Graph, JSON-LD, sitemap).
+ 
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![REST API](https://img.shields.io/badge/-REST_API-009688?style=flat-square)
+ 
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-B76E8A?style=for-the-badge)](https://weather-now-kappa-eight.vercel.app/)
+[![Source Code](https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/weather-now)
+
 <!-- ---- NoteHub ---- -->
 ### 📝 NoteHub · `Individual Project`
 
