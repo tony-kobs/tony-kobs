@@ -7,7 +7,7 @@
 </a>
   <br/>
 
-<img src="https://komarev.com/ghpvc/?username=tony-kobs&label=Profile%20views&color=E8827A&style=flat-square" alt="profile views" />
+<img src="https://visitor-badge.laobi.icu/badge?page_id=tony-kobs.tony-kobs&left_text=Profile%20views&left_color=%23555555&right_color=%23E8827A&style=flat-square" alt="profile views" />
 &nbsp;
 <a href="https://www.linkedin.com/in/antony-kobys/" target="_blank" rel="noopener noreferrer">
   <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
