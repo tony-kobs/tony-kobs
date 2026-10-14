@@ -3,7 +3,7 @@
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&customColorList=24,20,18&text=Anton%20Kobys&textBg=false&desc=Junior%20Fullstack%20Developer%20%E2%80%A2%20Next.js%20%E2%80%A2%20TypeScript%20%E2%80%A2%20Node.js&descAlign=50&descAlignY=60&fontAlignY=38&descSize=18&animation=fadeIn" width=100%/>
   <a href="https://github.com/tony-kobs">
-  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=E8827A&center=true&vCenter=true&width=620&lines=Junior+Fullstack+Developer;Next.js+%7C+TypeScript+%7C+Node.js+%7C+Express.js;Team+lead+on+nmt.in.ua;Open+to+remote+roles" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=E8827A&center=true&vCenter=true&width=620&lines=Junior+Fullstack+Developer;Next.js+%7C+TypeScript+%7C+Node.js+%7C+Express.js;Scope+first%2C+then+the+code;Own+the+result+and+ship+it" alt="Typing SVG" />
 </a>
   <br/>
 
@@ -23,11 +23,9 @@ antony@github:~$ whoami
 Junior Fullstack Developer · Kropyvnytskyi, Ukraine
 
 antony@github:~$ cat summary.txt
-Next.js, TypeScript, Node.js, and Express.js.
-Team lead on nmt.in.ua, an exam-prep product in development.
-The initiative is led by Mykhailo Maksymov.
-Built a team API on Express and MongoDB for RelaxMap.
-Open to remote roles. English is Intermediate (B1).
+I build fullstack products in Next.js, TypeScript, Node.js, and Express.js.
+Scope comes first, then the code. In review I keep my work distinct from the team's.
+I ran a grocery store for six years and closed it to work in software full time.
 
 antony@github:~$ ls soft-skills
 team-leadership/  code-review/  ownership/  direct-communication/
@@ -302,7 +300,7 @@ frontend development standards.
 
 <img src="https://img.shields.io/badge/Role-Junior%20Fullstack-8E7AB5?style=for-the-badge" alt="role" />
 
-<img src="https://img.shields.io/badge/Open%20to-Remote%20roles-5E9DBB?style=for-the-badge" alt="remote" />
+<img src="https://img.shields.io/badge/Focus-Scope%2C%20review%2C%20ownership-5E9DBB?style=for-the-badge" alt="focus" />
 
 <img src="https://img.shields.io/badge/English-Intermediate%20B1-CF7F9D?style=for-the-badge" alt="english" />
 
@@ -348,6 +346,6 @@ frontend development standards.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:B76E8A,50:8E7AB5,100:5E9DBB&height=120&section=footer" width="100%" />
 
-<sub>Junior Fullstack Developer · Open to remote roles.</sub>
+<sub>Scope first. Review the code. Own the result.</sub>
 
 </div>
