@@ -1,9 +1,9 @@
 <!-- ============ HEADER ============ -->
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&customColorList=24,20,18&text=Antony%20Kobys&textBg=false&desc=Full%20Stack%20Developer%20%E2%80%A2%20JavaScript%20%E2%80%A2%20React%20%E2%80%A2%20Next.js%20%E2%80%A2%20Node.js&descAlign=50&descAlignY=60&fontAlignY=38&descSize=18&animation=fadeIn" width=100%/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&customColorList=24,20,18&text=Anton%20Kobys&textBg=false&desc=Junior%20Fullstack%20Developer%20%E2%80%A2%20Next.js%20%E2%80%A2%20TypeScript%20%E2%80%A2%20Node.js&descAlign=50&descAlignY=60&fontAlignY=38&descSize=18&animation=fadeIn" width=100%/>
   <a href="https://github.com/tony-kobs">
-  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=E8827A&center=true&vCenter=true&width=620&lines=Full+Stack+Developer+in+training;Building+responsive%2C+accessible+web+apps;JavaScript+%7C+React+%7C+Next.js+%7C+Node.js;Clean+code+%26+problem+solving" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=E8827A&center=true&vCenter=true&width=620&lines=Junior+Fullstack+Developer;Next.js+%7C+TypeScript+%7C+Node.js+%7C+Express.js;Team+lead+on+nmt.in.ua;Open+to+remote+roles" alt="Typing SVG" />
 </a>
   <br/>
 
@@ -20,38 +20,77 @@
 
 ```bash
 antony@github:~$ whoami
-Frontend / Full Stack Developer
+Junior Fullstack Developer · Kropyvnytskyi, Ukraine
 
-antony@github:~$ grep mindset profile.txt
-I enjoy complex problems more than simple tasks.
-The harder the challenge, the more there is to learn.
+antony@github:~$ cat summary.txt
+Next.js, TypeScript, Node.js, and Express.js.
+Team lead on nmt.in.ua, an exam-prep product in development.
+The initiative is led by Mykhailo Maksymov.
+Built a team API on Express and MongoDB for RelaxMap.
+Open to remote roles. English is Intermediate (B1).
 
-antony@github:~$ ls interests
-architecture/
-scalability/
-ui-ux/
-optimization/
-problem-solving/
-
-antony@github:~$ echo $GOAL
-Build products. Solve challenges. Keep growing.
+antony@github:~$ ls soft-skills
+team-leadership/  code-review/  ownership/  direct-communication/
 ```
+
 <!-- ============ TECH STACK ============ -->
 ## 🚀 Tech Stack
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=html,css,js,react,nextjs,nodejs,vite,git,github,vscode&perline=10" alt="tech stack" />
+<img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,nodejs,express,html,css,mongodb,mysql,git,github&perline=6" alt="tech stack" />
+
+<br/>
+
+![GitHub Actions](https://img.shields.io/badge/-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![REST API](https://img.shields.io/badge/-REST_API-009688?style=flat-square)
+![JWT](https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
+![Joi](https://img.shields.io/badge/-Joi-1A1A1A?style=flat-square)
+![Mongoose](https://img.shields.io/badge/-Mongoose-880000?style=flat-square&logo=mongoose&logoColor=white)
 
 </div>
 
 <!-- ============ LEARNING ============ -->
 ## 🧠 Currently Learning
 
-- 🔹 Advanced **React** patterns & performance
-- 🔹 Backend fundamentals with **Node.js**
-- 🔹 Clean code & scalable project architecture
-- 🔹 Testing and CI/CD basics
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=vue,angular,wordpress,py,postgres&perline=5" alt="currently learning" />
+
+</div>
+
+Vue.js, Angular, WordPress, Python, and PostgreSQL.
+
+<!-- ============ LANGUAGES ============ -->
+## 🗣️ Languages
+
+- **English** — Intermediate (B1)
+- **Ukrainian** — Native
+
+<!-- ============ EXPERIENCE ============ -->
+## 💼 Work Experience
+
+**Business owner** · Private grocery store, Kropyvnytskyi  
+Oct 2019 - Dec 2025
+
+- Purchasing, pricing, and daily operations
+- Staffing a small team for six years
+- Closed the store in December 2025 to work in software
+
+<!-- ============ EDUCATION ============ -->
+## 🎓 Education
+
+**IT School GoIT** — Fullstack Developer  
+Nov 2025 - Oct 2026 · Certificate issued 7 October 2026 · 872 hours · ID 48321  
+HTML and CSS, JavaScript, React, TypeScript, Node.js, Express, MongoDB. RelaxMap is the final fullstack project.
+
+**Oles Honchar Dnipro National University** — Master's degree, Chemistry  
+2017 - 2018 · Full-time
+
+**Central Ukrainian National Technical University** — Master's degree, Economics  
+2017 - 2018 · Part-time
+
+The two master's degrees share the same years because one was full-time and the other was part-time.
 
 <!-- ============ PROJECTS ============ -->
 ## 🌟 Featured Projects
@@ -261,11 +300,11 @@ frontend development standards.
 
 <img src="https://img.shields.io/github/followers/tony-kobs?label=Followers&style=for-the-badge&color=B76E8A&logo=github&logoColor=white" alt="followers" />
 
-<img src="https://img.shields.io/badge/Mindset-Solve%20Complex%20Problems-8E7AB5?style=for-the-badge" alt="mindset" />
+<img src="https://img.shields.io/badge/Role-Junior%20Fullstack-8E7AB5?style=for-the-badge" alt="role" />
 
-<img src="https://img.shields.io/badge/Building-Scalable%20Web%20Apps-5E9DBB?style=for-the-badge" alt="building" />
+<img src="https://img.shields.io/badge/Open%20to-Remote%20roles-5E9DBB?style=for-the-badge" alt="remote" />
 
-<img src="https://img.shields.io/badge/Status-Keep%20Building-CF7F9D?style=for-the-badge" alt="status" />
+<img src="https://img.shields.io/badge/English-Intermediate%20B1-CF7F9D?style=for-the-badge" alt="english" />
 
 <br/><br/>
 
@@ -276,6 +315,10 @@ frontend development standards.
 ## 📬 Contact
 
 <div align="center">
+
+<a href="https://t.me/tony_kobs">
+  <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
+</a>
 
 <a href="https://www.linkedin.com/in/antony-kobys/">
   <img src="https://img.shields.io/badge/LinkedIn-B76E8A?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
@@ -289,6 +332,10 @@ frontend development standards.
   <img src="https://img.shields.io/badge/Email-5E9DBB?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
 </a>
 
+<br/><br/>
+
++38 (066) 379-83-85 · Kropyvnytskyi, Ukraine
+
 </div>
 
 ##
@@ -301,6 +348,6 @@ frontend development standards.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:B76E8A,50:8E7AB5,100:5E9DBB&height=120&section=footer" width="100%" />
 
-<sub>⚡ Turning ideas into products and challenges into experience.</sub>
+<sub>Junior Fullstack Developer · Open to remote roles.</sub>
 
 </div>
