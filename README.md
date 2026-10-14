@@ -56,6 +56,48 @@ Build products. Solve challenges. Keep growing.
 <!-- ============ PROJECTS ============ -->
 ## 🌟 Featured Projects
 
+<!-- ---- Relax Map ---- -->
+### 🗺️ Relax Map · `Team Project`
+
+> A web platform for finding and sharing places to rest in Ukraine, with search
+> by region and place type, location pages, ratings and reviews, and public
+> traveler profiles — built as a Next.js frontend and an Express API.
+
+**My role — Team Lead:** organized the workflow for a 12-person team, reviewed
+and merged pull requests across both repositories, built the Express API (auth,
+sessions, locations, and reviews), and implemented the header, footer, and
+logout on the frontend.
+
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-B76E8A?style=for-the-badge)](https://relaxmap-front-final.vercel.app/)
+[![Frontend](https://img.shields.io/badge/Frontend-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/relaxmap-front-final)
+[![Backend](https://img.shields.io/badge/Backend-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/relaxmap-back-final)
+
+<!-- ---- Travel Trucks ---- -->
+### 🚐 Travel Trucks · `Individual Project`
+
+> A camper rental catalog with location and vehicle filters, load-more
+> pagination, and a camper page that shows a gallery, five-star reviews, and a
+> booking form — built with Next.js App Router.
+
+**My role — Developer:** designed and developed the application independently,
+implemented catalog filtering with infinite loading, camper detail pages, a
+validated booking form, and Open Graph previews for each vehicle.
+
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![TanStack Query](https://img.shields.io/badge/-TanStack_Query-FF4154?style=flat-square&logo=reactquery&logoColor=white)
+![REST API](https://img.shields.io/badge/-REST_API-009688?style=flat-square)
+
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-B76E8A?style=for-the-badge)](https://campers-beryl.vercel.app/)
+[![Source Code](https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tony-kobs/campers)
+
 <!-- ---- Hexa Diamonds ---- -->
 ### 💎 Hexa Diamonds · `Commercial Project`
  
